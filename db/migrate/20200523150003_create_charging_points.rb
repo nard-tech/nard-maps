@@ -1,7 +1,7 @@
 class CreateChargingPoints < ActiveRecord::Migration[6.0]
   def change
     create_table :charging_points do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :address
       t.string :status
       t.text :memo_for_mapping
@@ -21,5 +21,10 @@ class CreateChargingPoints < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :charging_points, :name
+    add_index :charging_points, :address
+    add_index :charging_points, :status
+    add_index :charging_points, :date
   end
 end
