@@ -1,7 +1,7 @@
 class CreateGasStations < ActiveRecord::Migration[6.0]
   def change
     create_table :gas_stations do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :company_name
       t.string :brand_name
       t.string :shop_name
@@ -25,5 +25,9 @@ class CreateGasStations < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :gas_stations, :name
+    add_index :gas_stations, :address
+    add_index :gas_stations, :status
   end
 end
