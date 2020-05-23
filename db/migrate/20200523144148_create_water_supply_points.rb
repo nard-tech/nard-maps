@@ -1,7 +1,7 @@
 class CreateWaterSupplyPoints < ActiveRecord::Migration[6.0]
   def change
     create_table :water_supply_points do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :address
       t.integer :status
       t.text :memo_for_mapping
@@ -21,5 +21,10 @@ class CreateWaterSupplyPoints < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :water_supply_points, :name
+    add_index :water_supply_points, :address
+    add_index :water_supply_points, :status
+    add_index :water_supply_points, :date
   end
 end
