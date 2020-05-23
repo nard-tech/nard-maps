@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do
+    resources :bathhouses, only: %i[index show]
     resources :charging_points, only: %i[index show]
     resources :gas_stations, only: %i[index show]
     resources :water_supply_points, only: %i[index show]
