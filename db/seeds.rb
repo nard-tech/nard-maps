@@ -10,3 +10,4 @@ load Rails.root.join('db', 'fixtures', '201806_osaka_earthquake', 'water_supply_
 
 load Rails.root.join('db', 'fixtures', '201909_chiba_typhoon', 'water_supply_points.rb')
 load Rails.root.join('db', 'fixtures', '201909_chiba_typhoon', 'gas_stations.rb')
+load Rails.root.join('db', 'fixtures', '201909_chiba_typhoon', 'charging_points.rb')
