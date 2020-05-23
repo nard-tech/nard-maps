@@ -1,4 +1,4 @@
-class WaterSupplyPointsController < ApplicationController
+class Api::WaterSupplyPointsController < ApplicationController
   before_action :set_water_supply_point, only: :show
 
   def index
