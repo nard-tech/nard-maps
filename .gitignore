@@ -80,3 +80,4 @@ database_yml
 vendor/bundle
 private
 erd.pdf
+.vscode
