@@ -6,4 +6,6 @@ class Bathhouse < ApplicationRecord
     '自衛隊による支援' => 5,
     '不明' => 9
   }
+
+  include GeoScopes
 end
