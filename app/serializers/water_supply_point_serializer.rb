@@ -8,7 +8,5 @@ class WaterSupplyPointSerializer < ApplicationSerializer
              :tel,
              :source_confirmed_at, :staff_name
 
-  attribute :coordinate do |object|
-    { latitude: object.latitude, longitude: object.longitude }
-  end
+  geo_coordinates
 end
