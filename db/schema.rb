@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_150718) do
+ActiveRecord::Schema.define(version: 2020_05_23_150003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,61 @@ ActiveRecord::Schema.define(version: 2020_04_16_150718) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "charging_points", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address"
+    t.string "status"
+    t.text "memo_for_mapping"
+    t.text "memo"
+    t.string "date"
+    t.string "open_hours"
+    t.string "source_url"
+    t.string "city_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "town"
+    t.string "tel"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "source_confirmed_at"
+    t.string "staff_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address"], name: "index_charging_points_on_address"
+    t.index ["date"], name: "index_charging_points_on_date"
+    t.index ["name"], name: "index_charging_points_on_name"
+    t.index ["status"], name: "index_charging_points_on_status"
+  end
+
+  create_table "gas_stations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "company_name"
+    t.string "brand_name"
+    t.string "shop_name"
+    t.string "address"
+    t.string "category"
+    t.integer "status"
+    t.string "memo_for_mapping"
+    t.text "memo"
+    t.string "date"
+    t.string "open_hours"
+    t.string "source_url"
+    t.string "city_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "town"
+    t.string "tel"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "source_confirmed_at"
+    t.string "staff_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address"], name: "index_gas_stations_on_address"
+    t.index ["name"], name: "index_gas_stations_on_name"
+    t.index ["status"], name: "index_gas_stations_on_status"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,6 +111,32 @@ ActiveRecord::Schema.define(version: 2020_04_16_150718) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "water_supply_points", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address"
+    t.integer "status"
+    t.text "memo_for_mapping"
+    t.text "memo"
+    t.string "date"
+    t.string "open_hours"
+    t.string "source_url"
+    t.string "city_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "town"
+    t.string "tel"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "source_confirmed_at"
+    t.string "staff_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address"], name: "index_water_supply_points_on_address"
+    t.index ["date"], name: "index_water_supply_points_on_date"
+    t.index ["name"], name: "index_water_supply_points_on_name"
+    t.index ["status"], name: "index_water_supply_points_on_status"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
