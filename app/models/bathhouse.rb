@@ -1,0 +1,2 @@
+class Bathhouse < ApplicationRecord
+end
