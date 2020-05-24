@@ -12,9 +12,7 @@ csv_data.each do |data|
   city = city.tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z') if city.present?
 
   town = data['市区町村以下']
-  if town.present?
-    town = town.tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z').gsub(/−/, '-').gsub(/－/, '-')
-  end
+  town = town.tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z').gsub(/−/, '-').gsub(/－/, '-') if town.present?
 
   status = case data['営業状況']
            when '1 通常営業'
