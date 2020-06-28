@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :bathhouses, only: %i[index show]
     resources :charging_points, only: %i[index show]
+    resources :evacuation_facilities, only: %i[index show]
     resources :gas_stations, only: %i[index show]
     resources :water_supply_points, only: %i[index show]
   end
