@@ -10,7 +10,7 @@ class CreateChargingPoints < ActiveRecord::Migration[6.0]
       t.string :open_hours
       t.string :cloesed_on
       t.string :carieer
-      t.string :source_url
+      t.text :source_url
       t.string :city_code
       t.string :prefecture
       t.string :city
