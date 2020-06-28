@@ -11,6 +11,7 @@ class CreateChargingPoints < ActiveRecord::Migration[6.0]
       t.string :cloesed_on
       t.string :carieer
       t.text :source_url
+      t.text :source_memo
       t.string :city_code
       t.string :prefecture
       t.string :city

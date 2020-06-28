@@ -9,6 +9,7 @@ class CreateBathhouses < ActiveRecord::Migration[6.0]
       t.string :open_hours
       t.text :memo
       t.text :source_url
+      t.text :source_memo
       t.string :prefecture
       t.string :city
       t.string :town

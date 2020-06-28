@@ -13,6 +13,7 @@ class CreateGasStations < ActiveRecord::Migration[6.0]
       t.string :date
       t.string :open_hours
       t.text :source_url
+      t.text :source_memo
       t.string :city_code
       t.string :prefecture
       t.string :city
