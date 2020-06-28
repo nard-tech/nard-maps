@@ -28,7 +28,7 @@
 class ChargingPointSerializer < ApplicationSerializer
   attributes :name,
              :address,
-             :status, :memo_for_mapping, :date, :open_hours,
+             :status, :memo_for_mapping, :date, :open_hours, :carieer, :closed_on,
              :memo, :source_url,
              :city_code, :tel,
              :source_confirmed_at, :staff_name
