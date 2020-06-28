@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_175634) do
+ActiveRecord::Schema.define(version: 2020_06_28_060149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,44 @@ ActiveRecord::Schema.define(version: 2020_05_23_175634) do
     t.index ["date"], name: "index_charging_points_on_date"
     t.index ["name"], name: "index_charging_points_on_name"
     t.index ["status"], name: "index_charging_points_on_status"
+  end
+
+  create_table "evacuation_facilities", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address"
+    t.integer "status"
+    t.string "facility_type"
+    t.boolean "core"
+    t.text "memo_for_mapping"
+    t.text "memo"
+    t.string "opened_at"
+    t.string "closed_at"
+    t.integer "people_count"
+    t.string "people_counted_on"
+    t.text "source_url"
+    t.text "source_memo"
+    t.string "city_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "town"
+    t.string "tel"
+    t.float "latitude"
+    t.float "longitude"
+    t.float "height"
+    t.string "tsunami_status"
+    t.string "earthquake_resistance"
+    t.string "available_for"
+    t.string "not_available_for"
+    t.text "wanted"
+    t.text "sufficient"
+    t.text "confused"
+    t.text "other_memo"
+    t.string "welfare"
+    t.text "not_known"
+    t.datetime "source_confirmed_at"
+    t.string "staff_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "gas_stations", force: :cascade do |t|
