@@ -21,10 +21,11 @@ csv_data.each do |data|
   end
 
   status = data['状況']
-  if status =~ /・拠点\Z/
-    status.gsub!(/・拠点\Z/)
+  if /・拠点\Z/ =~ status
+    status = status.gsub(/・拠点\Z/)
     core = true
   else
+    status = status
     core = false
   end
 
@@ -67,17 +68,22 @@ EvacuationFacility.transaction do
 end
 
 csv_real_data = CSV.read(Rails.root.join('private', '201604_kumamoto_earthquake', 'evacuation_facilities_20160430.csv'), headers: true)
-EvacuationFacility.transaction do
-  csv_real_data.each do |data|
-    evacuation_facility = EvacuationFacility.find_by(name: data['名称（基本）'])
-    if evacuation_facility.blank?
-      puts "#{data['名称（基本）']} is not found"
-      next
+begin
+  EvacuationFacility.transaction do
+    csv_real_data.each do |data|
+      evacuation_facility = EvacuationFacility.find_by(name: data['名称（基本）'])
+      if evacuation_facility.blank?
+        puts "#{data['名称（基本）']} is not found"
+        next
+      end
+
+      puts "#{data['名称（基本）']} -> #{data['状況']}"
+      evacuation_facility.status = data['状況']
+      evacuation_facility.source_confirmed_at = data['更新日時']
+
+      evacuation_facility.save!
     end
-
-    evacuation_facility.status = data['状況']
-    evacuation_facility.source_confirmed_at = data['更新日時']
-
-    evacuation_facility.save!
   end
+rescue StandardError => e
+  binding.pry
 end
