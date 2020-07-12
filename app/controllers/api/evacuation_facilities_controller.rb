@@ -5,7 +5,7 @@ class Api::EvacuationFacilitiesController < ApplicationController
 
   def index
     @evacuation_facilities = EvacuationFacility.with_coordinates
-    render json: EvacuationFacilitySerializer.new(@evacuation_facilities, is_collection: true).serializable_hash
+    render json: EvacuationFacilitySerializer.new(@evacuation_facilities).serializable_hash
   end
 
   def show

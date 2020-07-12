@@ -3,7 +3,7 @@ class Api::WaterSupplyPointsController < ApplicationController
 
   def index
     @water_supply_points = WaterSupplyPoint.with_coordinates
-    render json: @water_supply_points.map { |object| WaterSupplyPointSerializer.new(object).serializable_hash }
+    render json: WaterSupplyPointSerializer.new(@water_supply_points).serializable_hash
   end
 
   def show
