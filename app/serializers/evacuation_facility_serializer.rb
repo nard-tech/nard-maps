@@ -1,7 +1,7 @@
 class EvacuationFacilitySerializer < ApplicationSerializer
   attributes :name,
              :address,
-             :status, :facility_type, :core, :memo_for_mapping,
+             :facility_type, :core, :memo_for_mapping,
              :memo, :opened_at, :closed_at, :people_count, :people_counted_on,
              :source_url, :source_memo,
              :source_confirmed_at, :staff_name,
@@ -14,4 +14,6 @@ class EvacuationFacilitySerializer < ApplicationSerializer
              :confused, :other_memo, :welfare, :not_known
 
   geo_coordinates
+
+  attribute :status, &:status
 end

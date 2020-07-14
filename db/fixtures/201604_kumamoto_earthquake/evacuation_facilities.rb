@@ -45,7 +45,7 @@ csv_data.each do |data|
     other_memo: data['その他連絡事項'],
     welfare: data['福祉'],
     not_known: data['不明点'],
-    status: status,
+    status: nil,
     core: core,
     facility_type: data['避難所の種類'],
     opened_at: data['開設時間'],
@@ -68,22 +68,19 @@ EvacuationFacility.transaction do
 end
 
 csv_real_data = CSV.read(Rails.root.join('private', '201604_kumamoto_earthquake', 'evacuation_facilities_20160430.csv'), headers: true)
-begin
-  EvacuationFacility.transaction do
-    csv_real_data.each do |data|
-      evacuation_facility = EvacuationFacility.find_by(name: data['名称（基本）'])
-      if evacuation_facility.blank?
-        puts "#{data['名称（基本）']} is not found"
-        next
-      end
 
-      puts "#{data['名称（基本）']} -> #{data['状況']}"
-      evacuation_facility.status = data['状況']
-      evacuation_facility.source_confirmed_at = data['更新日時']
-
-      evacuation_facility.save!
+EvacuationFacility.transaction do
+  csv_real_data.each do |data|
+    evacuation_facility = EvacuationFacility.find_by(name: data['名称（基本）'])
+    if evacuation_facility.blank?
+      puts "#{data['名称（基本）']} is not found"
+      next
     end
+
+    puts "#{data['名称（基本）']} -> #{data['状況']}"
+    evacuation_facility.update_columns(
+      status: data['状況'],
+      source_confirmed_at: data['更新日時']
+    )
   end
-rescue StandardError => e
-  binding.pry
 end

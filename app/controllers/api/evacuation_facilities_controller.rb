@@ -4,8 +4,8 @@ class Api::EvacuationFacilitiesController < ApplicationController
   before_action :set_evacuation_facility, only: :show
 
   def index
-    @evacuation_facilities = EvacuationFacility.with_coordinates
-    render json: EvacuationFacilitySerializer.new(@evacuation_facilities).serializable_hash
+    evacuation_facilities = EvacuationFacility.with_coordinates
+    render json: EvacuationFacilitySerializer.new(evacuation_facilities).serializable_hash
   end
 
   def show
