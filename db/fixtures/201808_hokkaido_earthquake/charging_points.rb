@@ -16,7 +16,7 @@ csv_data.each do |data|
     memo_for_mapping: data['マッピング上の特記事項'],
     memo: data['提供サービス'],
     open_hours: data['開設時間'],
-    cloesed_on: data['定休日'],
+    closed_on: data['定休日'],
     memo: data['利用に関する特記事項'],
     source_url: data['出典'],
     source_confirmed_at: data['出典最終確認日時'],

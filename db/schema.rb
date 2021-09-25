@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_060149) do
     t.text "memo"
     t.string "date"
     t.string "open_hours"
-    t.string "cloesed_on"
+    t.string "closed_on"
     t.string "carieer"
     t.text "source_url"
     t.text "source_memo"

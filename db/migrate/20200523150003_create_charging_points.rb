@@ -8,7 +8,7 @@ class CreateChargingPoints < ActiveRecord::Migration[6.0]
       t.text :memo
       t.string :date
       t.string :open_hours
-      t.string :cloesed_on
+      t.string :closed_on
       t.string :carieer
       t.text :source_url
       t.text :source_memo
