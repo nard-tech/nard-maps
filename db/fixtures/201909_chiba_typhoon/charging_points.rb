@@ -1,6 +1,6 @@
 require 'csv'
 
-csv_data = CSV.read(Rails.root.join('private', '201909_chiba_typhoon', 'charging_points.csv'), headers: true)
+csv_data = CSV.read(Rails.root.join('db', 'data', '201909_chiba_typhoon', 'charging_points.csv'), headers: true)
 charging_points = []
 csv_data.each do |data|
   latlng = data['緯度・経度']

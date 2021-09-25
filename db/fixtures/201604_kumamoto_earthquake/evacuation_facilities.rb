@@ -8,7 +8,7 @@ def normalize_value(value)
   end
 end
 
-csv_data = CSV.read(Rails.root.join('private', '201604_kumamoto_earthquake', 'evacuation_facilities.csv'), headers: true)
+csv_data = CSV.read(Rails.root.join('db', 'data', '201604_kumamoto_earthquake', 'evacuation_facilities.csv'), headers: true)
 evacuation_facilities = []
 csv_data.each do |data|
   lat = data['緯度']
@@ -67,7 +67,7 @@ EvacuationFacility.transaction do
   evacuation_facilities.each(&:save!)
 end
 
-csv_real_data = CSV.read(Rails.root.join('private', '201604_kumamoto_earthquake', 'evacuation_facilities_20160430.csv'), headers: true)
+csv_real_data = CSV.read(Rails.root.join('db', 'data', '201604_kumamoto_earthquake', 'evacuation_facilities_20160430.csv'), headers: true)
 
 EvacuationFacility.transaction do
   csv_real_data.each do |data|

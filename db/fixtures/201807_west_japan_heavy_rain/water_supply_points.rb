@@ -1,6 +1,6 @@
 require 'csv'
 
-csv_data = CSV.read(Rails.root.join('private', '201806_osaka_earthquake', 'water_supply_points.csv'), headers: true)
+csv_data = CSV.read(Rails.root.join('db', 'data', '201806_osaka_earthquake', 'water_supply_points.csv'), headers: true)
 water_supply_points = []
 csv_data.each do |data|
   prefecture = data['都道府県']
