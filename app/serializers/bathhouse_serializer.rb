@@ -23,8 +23,7 @@ class BathhouseSerializer < ApplicationSerializer
   attributes :name,
              :address,
              :status, :date, :closed_on, :open_hours,
-             :memo, :source_url,
-             :staff_name
+             :memo, :source_url
 
   geo_coordinates
 end
